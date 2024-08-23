@@ -1,1 +1,29 @@
-<p>form2 works!</p>
+<form [formGroup]="profileForm">
+  <label>
+    Name:
+    <input type="text" formControlName="name" />
+  </label>
+  <br /><br />
+  <label>
+    Email:
+    <input type="email" formControlName="email" />
+  </label>
+
+  <br /><br />
+
+  <div formGroupName="address">
+    <label>
+      Street number:
+      <input type="text" formControlName="streetno" />
+    </label>
+    <br /><br />
+    <label>
+      ZipCode:
+      <input type="email" formControlName="zip" />
+    </label>
+
+    <br /><br />
+  </div>
+
+  <button (click)="submitForm()">Submit</button>
+</form>
