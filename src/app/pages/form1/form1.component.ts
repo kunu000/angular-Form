@@ -34,7 +34,7 @@ export class Form1Component {
     // this.inputControl.setValidators([Validators.required]); // only this validation get applied
     // this.inputControl.updateValueAndValidity();
     // this.inputControl.setErrors({ hello: true });
-    console.log(this.inputControl.hasError('required')) // find specific error
+    console.log(this.inputControl.hasError('required')); // find specific error
     console.log(this.inputControl.errors);
   }
 

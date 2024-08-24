@@ -1,0 +1,46 @@
+<form [formGroup]="profileForm">
+  <label>
+    Name:
+    <input type="text" formControlName="name" />
+  </label>
+
+  @if(profileForm.controls['name'].invalid &&
+  profileForm.controls['name'].touched){
+  @if(profileForm.controls['name'].errors?.['required']){
+  <div class="invalid">Required</div>
+  } @if(profileForm.controls['name'].errors?.['minlength']){
+  <div class="invalid">Minimum</div>
+  } }
+
+  <br /><br />
+  <label>
+    Email:
+    <input type="email" formControlName="email" />
+  </label>
+
+  @if(profileForm.controls['email'].invalid &&
+  profileForm.controls['email'].dirty){
+  @if(profileForm.controls['email'].errors?.['required']){
+  <div class="invalid">Required</div>
+  } @if(profileForm.controls['email'].errors?.['email']){
+  <div class="invalid">email</div>
+  } }
+
+  <br /><br />
+
+  <div formGroupName="address">
+    <label>
+      Street number:
+      <input type="text" formControlName="streetno" />
+    </label>
+    <br /><br />
+    <label>
+      ZipCode:
+      <input type="email" formControlName="zip" />
+    </label>
+
+    <br /><br />
+  </div>
+
+  <button (click)="submitForm()">Submit</button>
+</form>
