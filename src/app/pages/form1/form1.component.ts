@@ -15,6 +15,13 @@ export class Form1Component {
     Validators.maxLength(30),
   ]);
 
+  ngOnInit(): void {
+    // whenever the value of inputControl changes this get called
+    this.inputControl.valueChanges.subscribe((value) => {
+      console.log('value changed', value);
+    });
+  }
+
   handleSubmit() {
     console.log(this.inputControl.value);
     console.log(this.inputControl.valid);
