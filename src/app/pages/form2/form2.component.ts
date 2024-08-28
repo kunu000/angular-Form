@@ -5,7 +5,10 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { zip } from 'rxjs';
+import {
+  noOnlySpacesValidator,
+  passwordPattern,
+} from '../../validators/upperCase.validator';
 
 @Component({
   selector: 'app-form2',
@@ -16,8 +19,16 @@ import { zip } from 'rxjs';
 })
 export class Form2Component {
   profileForm: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    name: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+      noOnlySpacesValidator,
+    ]),
     email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.pattern(passwordPattern),
+    ]),
     address: new FormGroup({
       streetno: new FormControl('', [Validators.required]),
       zip: new FormControl('', [

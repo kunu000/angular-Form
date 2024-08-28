@@ -9,6 +9,8 @@
 </label>
 @if(inputControl.errors?.['required']){
 <div class="invalid">Invalid Input</div>
+} @else if(inputControl.errors?.['nouppercase']){
+<div class="invalid">Uppercase</div>
 } @else if(inputControl.errors?.['minlength']){
 <div class="invalid">Min</div>
 }@else if(inputControl.errors?.['maxlength']){

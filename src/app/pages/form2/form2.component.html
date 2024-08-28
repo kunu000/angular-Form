@@ -3,11 +3,33 @@
     Name:
     <input type="text" formControlName="name" />
   </label>
+  @if(this.profileForm.controls['name'].errors){
+  @if(this.profileForm.controls['name'].errors['required']){
+  <div class="invalid">required</div>
+  }@else if(this.profileForm.controls['name'].errors['noonlySpace']){
+  <div class="invalid">spaces error</div>
+  } @else if(this.profileForm.controls['name'].errors['minlength']){
+  <div class="invalid">min length</div>
+  } }
   <br /><br />
   <label>
     Email:
     <input type="email" formControlName="email" />
   </label>
+
+  <br /><br />
+
+  <label>
+    Password:
+    <input type="password" formControlName="password" />
+  </label>
+  @if(this.profileForm.controls['password'].invalid){
+  <div class="invalid">
+    Password must be at least 8 characters long and include at least one
+    uppercase letter, one lowercase letter, one number, and one special
+    character.
+  </div>
+  }
 
   <br /><br />
 

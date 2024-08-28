@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { upperCaseValidator } from '../../validators/upperCase.validator';
 
 @Component({
   selector: 'app-form1',
@@ -13,6 +14,7 @@ export class Form1Component {
     Validators.required,
     Validators.minLength(3),
     Validators.maxLength(30),
+    upperCaseValidator,
   ]);
 
   ngOnInit(): void {
