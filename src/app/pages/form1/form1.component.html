@@ -19,4 +19,28 @@
 
 <br />
 <br />
+
+<label
+  >Phone number:
+  <input type="text" id="numberInput" (input)="validateNumberInput($event)" />
+</label>
+
+<br /><br />
+
+<label
+  >Float number:
+  <input type="text" id="f-num1" (input)="validateFloatNumberInput($event)" />
+</label>
+<br /><br />
+
+<label
+  >Negative and Positive Float number:
+  <input
+    type="text"
+    id="f-num2"
+    (input)="validateFloatNumberNegativeInput($event)"
+  />
+</label>
+<br /><br />
+
 <button (click)="handleSubmit()">Submit</button>

@@ -55,4 +55,51 @@ export class Form1Component {
     //   this.inputControl.setErrors(null);
     // }
   }
+
+  // only number sutable for phone number
+  validateNumberInput(e: any) {
+    // Replace any non-numeric characters
+    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+  }
+
+  // float numbers
+  validateFloatNumberInput(e: any) {
+    // Replace any character that is not a digit or a decimal point
+    e.target.value = e.target.value.replace(/[^0-9.]/g, '');
+
+    // Ensure that only one decimal point is allowed
+    const parts = e.target.value.split('.');
+    if (parts.length > 2) {
+      e.target.value = parts[0] + '.' + parts.slice(1).join('');
+    }
+  }
+
+  // accept float number in negative as well as positive
+  validateFloatNumberNegativeInput(e: any) {
+    // Get the current input value
+    let inputValue = e.target.value;
+
+    // Allow only one hyphen and only at the start of the input
+    const firstCharIsHyphen = inputValue.charAt(0) === '-';
+
+    // Remove any hyphens not at the start
+    inputValue = firstCharIsHyphen
+      ? '-' + inputValue.slice(1).replace(/-/g, '') // Retain the first hyphen and remove any others
+      : inputValue.replace(/-/g, ''); // No leading hyphen, so remove all hyphens
+
+    // Replace any character that is not a digit or a decimal point
+    inputValue = inputValue.replace(/[^0-9.]/g, '');
+
+    // Reapply the hyphen at the beginning if it was originally there
+    inputValue = firstCharIsHyphen ? '-' + inputValue : inputValue;
+
+    // Ensure that only one decimal point is allowed
+    const parts = inputValue.split('.');
+    if (parts.length > 2) {
+      inputValue = parts[0] + '.' + parts.slice(1).join('');
+    }
+
+    // Set the processed value back to the input
+    e.target.value = inputValue;
+  }
 }
